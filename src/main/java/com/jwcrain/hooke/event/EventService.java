@@ -4,8 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,6 +49,28 @@ public class EventService {
         return EventResource.fromEntity(eventEntityOptional.get());
     }
 
+    /* Greedy algo to return event resources that don't conflict based on picking the one that finishes soonest */
+    public List<EventResource> getSchedule() {
+        List<EventEntity> eventEntities = eventRepository.findAllOrderByEndTime();
+
+        List<EventResource> schedule = new ArrayList<>();
+
+        EventResource currentResource = EventResource.fromEntity(eventEntities.get(0));
+
+        schedule.add(currentResource);
+
+        for (int i = 1; i < eventEntities.size(); i++) {
+            EventEntity potentialResource = eventEntities.get(i);
+
+            if (potentialResource.getStartTime() > currentResource.getEndTime()) {
+                currentResource = EventResource.fromEntity(potentialResource);
+                schedule.add(currentResource);
+            }
+        }
+
+        return schedule;
+    }
+
     public EventResource updateEvent(EventResource eventResource) {
         int id = eventResource.getId();
         Optional<EventEntity> eventEntityOptional = eventRepository.findById(id);
@@ -58,6 +82,8 @@ public class EventService {
         }
 
         eventEntity = eventResource.toEntity();
+
+        eventEntity.setId(eventEntityOptional.get().getId());
 
         return EventResource.fromEntity(eventRepository.save(eventEntity));
     }

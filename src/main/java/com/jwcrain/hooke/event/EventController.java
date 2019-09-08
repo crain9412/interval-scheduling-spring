@@ -20,6 +20,11 @@ public class EventController {
         return eventService.createEvent(eventResource);
     }
 
+    @RequestMapping(value = "/schedule", method = RequestMethod.GET)
+    public List<EventResource> getSchedule() {
+        return eventService.getSchedule();
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public List<EventResource> getEvents(Pageable pageable) {
         return eventService.getEvents(pageable);
