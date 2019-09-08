@@ -1,4 +1,4 @@
-package com.jwcrain.hooke.config;
+package com.jwcrain.intervalschedulingspring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

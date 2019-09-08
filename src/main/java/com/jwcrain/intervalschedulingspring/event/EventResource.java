@@ -1,4 +1,4 @@
-package com.jwcrain.hooke.event;
+package com.jwcrain.intervalschedulingspring.event;
 
 import lombok.Data;
 import org.springframework.validation.annotation.Validated;

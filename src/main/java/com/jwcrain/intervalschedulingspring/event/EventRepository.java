@@ -1,4 +1,4 @@
-package com.jwcrain.hooke.event;
+package com.jwcrain.intervalschedulingspring.event;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

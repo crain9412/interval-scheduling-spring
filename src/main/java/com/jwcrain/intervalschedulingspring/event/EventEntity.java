@@ -1,4 +1,4 @@
-package com.jwcrain.hooke.event;
+package com.jwcrain.intervalschedulingspring.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;

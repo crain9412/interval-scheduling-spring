@@ -1,4 +1,4 @@
-package com.jwcrain.hooke.event;
+package com.jwcrain.intervalschedulingspring.event;
 
 import java.util.List;
 
