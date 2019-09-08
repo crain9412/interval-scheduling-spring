@@ -1,4 +1,4 @@
-package com.teslagov.clarakm.page.config;
+package com.jwcrain.hooke.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,9 +7,8 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @author Jon Crain
- * <p>
  * Configuration to autogenerate a swagger spec for every endpoint
+ * @author Jon Crain
  */
 @Configuration
 @EnableSwagger2
